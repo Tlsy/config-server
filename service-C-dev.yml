@@ -5,13 +5,13 @@ spring:
     sampler:
       probability: 1.0
   zipkin:
-    base-url: http://localhost:8507/
+    base-url: http://test.tembin.com:8507/
 server:
   port: 8092
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://127.0.0.1:8501/eureka/
+      defaultZone: http://test.tembin.com:8501/eureka/
 feign:
   hystrix:
     enabled: true
