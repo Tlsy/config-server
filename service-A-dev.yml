@@ -15,6 +15,8 @@ spring:
     prefix_url: http://test.tembin.com/passport
     callback_url: http://local.tembin.com:8085/member-api/callback
     default_url: http://local.tembin.com:8085/member-api
+swagger2:
+  package: com.tembin.member.web.api,com.tembin.member.web.service
   mvc:
     view:
       prefix: /WEB-INF/pages/
