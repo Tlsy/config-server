@@ -10,6 +10,11 @@ spring:
     user:
       name: test
       password: 123
+  cas:
+    login_url: http://test.tembin.com/passport/login
+    prefix_url: http://test.tembin.com/passport
+    callback_url: http://local.tembin.com:8085/member-api/callback
+    default_url: http://local.tembin.com:8085/member-api
   mvc:
     view:
       prefix: /WEB-INF/pages/
@@ -20,6 +25,8 @@ jwt:
   header: jwtToken
 server:
   port: 8090
+  servlet:
+    context-path: /oldriver-keywords
 eureka:
   client:
     serviceUrl:
