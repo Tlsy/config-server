@@ -1,11 +1,17 @@
 spring:
   application:
-    name: service-order
+    name: service-search
+  data:
+    elasticsearch:
+      repositories:
+        enabled: true
+      cluster-nodes: 192.168.0.50:9300,192.168.0.51:9300,192.168.0.52:9300
+      cluster-name: elasticsearch
   datasource:
     druid:
-      url: jdbc:mysql://db.tembin.com:3306/tembin_money?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useSSL=false
-      username: root
-      password: 11
+      url: jdbc:mysql://47.52.174.241:3306/colossus?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useSSL=false
+      username: colossus
+      password: 123456
       driver-class-name: com.mysql.jdbc.Driver
       max-open-prepared-statements: 20
       initial-size: 2
@@ -42,18 +48,10 @@ pagehelper:
   reasonable: true
   supportMethodsArguments: true
   params: count=countSql
-swagger2.package: com.colossus.order.service
-
-# Redis
-redisKey:
-  # 缓存时间 一天
-  expire_time: 86400
-  prefix:
-    cart_info_profix: 'CART_INFO:'
-    cart_order_info_profix: 'CART_ORDER_INFO:'
-    cart_order_index_profix: 'CART_ORDER_INDEX:'
+# swagger2
+swagger2.package: com.colossus.search.service
 server:
-  port: 8055
+  port: 8058
 feign:
   hystrix:
     enabled: true

@@ -1,11 +1,11 @@
 spring:
   application:
-    name: service-notify
+    name: service-cart
   datasource:
     druid:
-      url: jdbc:mysql://db.tembin.com:3306/tembin_money?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useSSL=false
-      username: root
-      password: 11
+      url: jdbc:mysql://47.52.174.241:3306/colossus?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useSSL=false
+      username: colossus
+      password: 123456
       driver-class-name: com.mysql.jdbc.Driver
       max-open-prepared-statements: 20
       initial-size: 2
@@ -42,26 +42,38 @@ pagehelper:
   reasonable: true
   supportMethodsArguments: true
   params: count=countSql
-swagger2.package: com.colossus.notify.service
+swagger2.package: com.colossus.cart.service
 
 # Redis
 redisKey:
   # 缓存时间 默认半小时
-  expire_time: 3600
+  expire_time: 1800
   prefix:
-    # 号码登录次数前缀
-    mobile_login_time:
-      key: 'MOBILE_LOGIN_TIME:'
-      expire_time: 3600
-    # 号码code前缀
-    mobile_login_code:
-      key: 'MOBILE_LOGIN_CODE:'
-      expire_time: 120
+    # 购物车
+    cart_info_profix: 'CART_INFO:'
+    # 商品
+    item_info_profix: 'ITEM_INFO:'
+    item_info_base_suffix: ':BASE'
+    item_info_desc_suffix: ':DESC'
+    # Redis 缓存时间 默认3天
+    redis_cart_expire_time: 259200
 
-# Redis 一段时间允许发送几条短信
-mobile_number_ceiling: 3
+
+login:
+  # 验证名
+  validation:
+    #登录名
+    ispinengaged: isPinEngaged
+    #邮箱
+    isemailengaged: isEmailEngaged
+    #手机
+    ismobileengaged: isMobileEngaged
+  # 推荐登录名后缀随机数取值范围
+  random_number: 50000
+  # 登录成功页面
+  success_url: http://localhost:8104/success
 server:
-  port: 8054
+  port: 8052
 feign:
   hystrix:
     enabled: true

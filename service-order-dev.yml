@@ -1,11 +1,11 @@
 spring:
   application:
-    name: service-item
+    name: service-order
   datasource:
     druid:
-      url: jdbc:mysql://db.tembin.com:3306/tembin_money?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useSSL=false
-      username: root
-      password: 11
+      url: jdbc:mysql://47.52.174.241:3306/colossus?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useSSL=false
+      username: colossus
+      password: 123456
       driver-class-name: com.mysql.jdbc.Driver
       max-open-prepared-statements: 20
       initial-size: 2
@@ -42,20 +42,18 @@ pagehelper:
   reasonable: true
   supportMethodsArguments: true
   params: count=countSql
-swagger2.package: com.colossus.item.service
+swagger2.package: com.colossus.order.service
 
 # Redis
 redisKey:
-  # 缓存时间 默认半小时
-  expire_time: 1800
+  # 缓存时间 一天
+  expire_time: 86400
   prefix:
-    item_info_profix: 'ITEM_INFO:'
-  suffix:
-    item_info_base_suffix: ':BASE'
-    item_info_desc_suffix: ':DESC'
-
+    cart_info_profix: 'CART_INFO:'
+    cart_order_info_profix: 'CART_ORDER_INFO:'
+    cart_order_index_profix: 'CART_ORDER_INDEX:'
 server:
-  port: 8053
+  port: 8055
 feign:
   hystrix:
     enabled: true
@@ -66,5 +64,3 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://127.0.0.1:8501/eureka/
-# 静态页面生成目录
-static_html_path: /Volumes/HGST/IdeaProjects/xbin-store/xbin-store-service-item/item/

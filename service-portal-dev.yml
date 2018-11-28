@@ -1,11 +1,11 @@
 spring:
   application:
-    name: service-auth
+    name: service-portal
   datasource:
     druid:
-      url: jdbc:mysql://db.tembin.com:3306/tembin_money?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useSSL=false
-      username: root
-      password: 11
+      url: jdbc:mysql://47.52.174.241:3306/colossus?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useSSL=false
+      username: colossus
+      password: 123456
       driver-class-name: com.mysql.jdbc.Driver
       max-open-prepared-statements: 20
       initial-size: 2
@@ -42,37 +42,17 @@ pagehelper:
   reasonable: true
   supportMethodsArguments: true
   params: count=countSql
-
-# swagger2
-swagger2.package: com.colossus.auth.service
+swagger2.package: com.colossus.portal.service
 
 # Redis
 redisKey:
-  # 验证码Redis前缀
-  verifycode: 'verify_code_'
-  # 号码code
-  mobile_login_code: 'mobile_login_code_'
   # 缓存时间 默认半小时
   expire_time: 1800
-  shiro:
-    # 用户登录信息前缀
-    user_cache: 'shiro_user_'
-    session_cache: 'shiro_session_'
-login:
-  # 验证名
-  validation:
-    #登录名
-    ispinengaged: isPinEngaged
-    #邮箱
-    isemailengaged: isEmailEngaged
-    #手机
-    ismobileengaged: isMobileEngaged
-  # 推荐登录名后缀随机数取值范围
-  random_number: 50000
-  # 登录成功页面
-  success_url: http://localhost:8106/success
+  prefix:
+    # 首页大广告
+    index_ad: INDEX_AD
 server:
-  port: 8051
+  port: 8056
 feign:
   hystrix:
     enabled: true
